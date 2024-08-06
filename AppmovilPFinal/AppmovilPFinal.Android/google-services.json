@@ -1,0 +1,49 @@
+{
+  "project_info": {
+    "project_number": "17354834957",
+    "firebase_url": "https://proyectofinalmovil-ed3f4-default-rtdb.firebaseio.com",
+    "project_id": "proyectofinalmovil-ed3f4",
+    "storage_bucket": "proyectofinalmovil-ed3f4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:17354834957:android:a2e5c1135a01bc51c78144",
+        "android_client_info": {
+          "package_name": "com.companyname.appmovilpfinal"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAqASqMwQkDgjD5PovIehR7pwZPtcBGiQk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:17354834957:android:4f5853b3c952b395c78144",
+        "android_client_info": {
+          "package_name": "com.companyname.proyectofinalmovil"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAqASqMwQkDgjD5PovIehR7pwZPtcBGiQk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
