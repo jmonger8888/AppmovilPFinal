@@ -4,8 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Firebase.Auth;
-
-
 using Xamarin.Essentials;
 
 using Xamarin.Forms;
