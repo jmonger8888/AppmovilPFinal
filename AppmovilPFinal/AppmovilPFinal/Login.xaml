@@ -12,6 +12,7 @@
         <Label Text="¿No tiene cuenta? Regístrese aquí" FontSize="Small" TextColor="Blue" 
                 HorizontalOptions="Center">
             <Label.GestureRecognizers>
+                <TapGestureRecognizer Tapped="OnRegisterLabelTapped" />
             </Label.GestureRecognizers>
         </Label>
     </StackLayout>
