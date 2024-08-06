@@ -6,7 +6,7 @@
         <StackLayout x:Name="LoginSection" Padding="20" VerticalOptions="Center">
             <Entry x:Name="UsernameEntry" Placeholder="Correo"  />
             <Entry x:Name="PasswordEntry" Placeholder="Contraseña" IsPassword="True"  />
-            <Button Text="Registrarse" x:Name="btnRegistro"  />
+            <Button Text="Registrarse" x:Name="btnRegistro" Clicked="OnRegisterButtonClicked" />
 
         </StackLayout>
     </ContentPage.Content>
