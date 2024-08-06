@@ -7,7 +7,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppmovilPFinal.Android", "A
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppmovilPFinal.iOS", "AppmovilPFinal\AppmovilPFinal.iOS\AppmovilPFinal.iOS.csproj", "{534F536B-B8A9-421F-BC52-71C32FCD2603}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppmovilPFinal", "AppmovilPFinal\AppmovilPFinal\AppmovilPFinal.csproj", "{A4A2A893-BE11-4973-AEEB-6BCF92C4E9D2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppmovilPFinal", "AppmovilPFinal\AppmovilPFinal\AppmovilPFinal.csproj", "{A4A2A893-BE11-4973-AEEB-6BCF92C4E9D2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Elementos de la solución", "Elementos de la solución", "{35D98F97-0DD2-4227-8CCF-FC8EC28B2A97}"
+	ProjectSection(SolutionItems) = preProject
+		RegisterPage1.xaml = RegisterPage1.xaml
+		RegisterPage1.xaml.cs = RegisterPage1.xaml.cs
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppmovilPFinal.RegisterPage">
+    <StackLayout Padding="20" VerticalOptions="Center">
+        <Label Text="Registro" FontSize="Medium" HorizontalOptions="Center" />
+        <Entry x:Name="UsernameEntry" Placeholder="Usuario" />
+        <Entry x:Name="PasswordEntry" Placeholder="Contraseña" IsPassword="True" />
+        <Entry x:Name="ConfirmPasswordEntry" Placeholder="Confirmar Contraseña" IsPassword="True" />
+        <Button Text="Registrarse" Clicked="OnRegisterButtonClicked" />
+    </StackLayout>
+</ContentPage>

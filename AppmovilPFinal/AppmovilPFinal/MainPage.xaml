@@ -4,20 +4,36 @@
              x:Class="AppmovilPFinal.MainPage">
 
     <StackLayout>
-        <Label Text="Escuela Deportiva ULACIT" FontSize="Title" TextColor="#cb6ce6" FontAttributes="Bold" 
-               HorizontalOptions="Center" BackgroundColor="WhiteSmoke"/>
-        <Button Text="Gestión de Estudiantes" FontSize="Subtitle" TextColor="#f26638" FontAttributes="Italic" 
-               HorizontalOptions="Center" BackgroundColor="WhiteSmoke" />
-        <Button Text="Envío de Avisos" FontSize="Subtitle" TextColor="#f26638" FontAttributes="Italic" 
-               HorizontalOptions="Center" BackgroundColor="WhiteSmoke" />
-        <Button Text="Registro de Asistencia" FontSize="Subtitle" TextColor="#f26638" FontAttributes="Italic" 
-               HorizontalOptions="Center" BackgroundColor="WhiteSmoke" />
-        <Button Text="Registro de Salud y Medicación" FontSize="Subtitle" TextColor="#f26638" FontAttributes="Italic" 
-               HorizontalOptions="Center" BackgroundColor="WhiteSmoke" />
-        <Button Text="Consultas y Reportes" FontSize="Subtitle" TextColor="#f26638" FontAttributes="Italic" 
-               HorizontalOptions="Center" BackgroundColor="WhiteSmoke" />
+        <!-- Login Section -->
+        <StackLayout x:Name="LoginSection" Padding="20" VerticalOptions="Center">
+            <Entry x:Name="UsernameEntry" Placeholder="Usuario" />
+            <Entry x:Name="PasswordEntry" Placeholder="Contraseña" IsPassword="True" />
 
+            <Label Text="¿No tiene cuenta? Regístrese aquí" FontSize="Small" TextColor="Blue" 
+                   HorizontalOptions="Center">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnRegisterTapped"/>
+                </Label.GestureRecognizers>
+            </Label>
+
+            <Button Text="Iniciar Sesión" Clicked="OnLoginButtonClicked" />
+        </StackLayout>
+
+        <!-- Menu Section -->
+        <StackLayout x:Name="MenuSection" IsVisible="False">
+            <Label Text="Escuela Deportiva ULACIT" FontSize="Title" TextColor="#cb6ce6" FontAttributes="Bold" 
+                   HorizontalOptions="Center" BackgroundColor="WhiteSmoke"/>
+            <Button Text="Gestión de Estudiantes" FontSize="Subtitle" TextColor="#f26638" FontAttributes="Italic" 
+                   HorizontalOptions="Center" BackgroundColor="WhiteSmoke" />
+            <Button Text="Envío de Avisos" FontSize="Subtitle" TextColor="#f26638" FontAttributes="Italic" 
+                   HorizontalOptions="Center" BackgroundColor="WhiteSmoke" />
+            <Button Text="Registro de Asistencia" FontSize="Subtitle" TextColor="#f26638" FontAttributes="Italic" 
+                   HorizontalOptions="Center" BackgroundColor="WhiteSmoke" />
+            <Button Text="Registro de Salud y Medicación" FontSize="Subtitle" TextColor="#f26638" FontAttributes="Italic" 
+                   HorizontalOptions="Center" BackgroundColor="WhiteSmoke" />
+            <Button Text="Consultas y Reportes" FontSize="Subtitle" TextColor="#f26638" FontAttributes="Italic" 
+                   HorizontalOptions="Center" BackgroundColor="WhiteSmoke" />
+        </StackLayout>
     </StackLayout>
-
 
 </ContentPage>
