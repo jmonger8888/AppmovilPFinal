@@ -87,14 +87,18 @@
     <AndroidResource Include="Resources\mipmap-xxxhdpi\icon.png" />
     <AndroidResource Include="Resources\mipmap-xxxhdpi\launcher_foreground.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Resources\drawable\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\AppmovilPFinal\AppmovilPFinal.csproj">
       <Project>{F1BDAA8D-4CB8-43AB-96D8-AB108850149C}</Project>
       <Name>AppmovilPFinal</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\drawable\logo.png" />
+    <Content Include="Resources\drawable\niñavoley.png" />
+    <Content Include="Resources\drawable\niñobaske.png" />
+    <Content Include="Resources\drawable\niñofutb.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>
