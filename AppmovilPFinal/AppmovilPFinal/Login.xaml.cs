@@ -46,7 +46,7 @@ namespace AppmovilPFinal
                 await DisplayAlert("Inicio de sesión exitoso", "Bienvenido/a a la aplicación", "OK");
 
                 // Navegar a la página principal o dashboard
-                App.Current.MainPage = new NavigationPage(new MainPage());
+                await Navigation.PushAsync(new MainPage());
             }
             catch (FirebaseAuthException ex)
             {
