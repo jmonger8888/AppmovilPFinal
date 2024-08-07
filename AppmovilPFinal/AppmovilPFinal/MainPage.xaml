@@ -3,21 +3,21 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppmovilPFinal.MainPage">
 
-
-        <!-- Menu Section -->
-    <StackLayout x:Name="MenuSection" IsVisible="False">
+    <!-- Menu Section -->
+    <StackLayout>
         <Label Text="Escuela Deportiva ULACIT" FontSize="Title" TextColor="#cb6ce6" FontAttributes="Bold" 
-                   HorizontalOptions="Center" BackgroundColor="WhiteSmoke"/>
+               HorizontalOptions="Center" BackgroundColor="WhiteSmoke"/>
         <Button Text="Gestión de Estudiantes" FontSize="Subtitle" TextColor="#f26638" FontAttributes="Italic" 
-                   HorizontalOptions="Center" BackgroundColor="WhiteSmoke" />
+               HorizontalOptions="Center" BackgroundColor="WhiteSmoke" />
         <Button Text="Envío de Avisos" FontSize="Subtitle" TextColor="#f26638" FontAttributes="Italic" 
-                   HorizontalOptions="Center" BackgroundColor="WhiteSmoke" />
+               HorizontalOptions="Center" BackgroundColor="WhiteSmoke" />
         <Button Text="Registro de Asistencia" FontSize="Subtitle" TextColor="#f26638" FontAttributes="Italic" 
-                   HorizontalOptions="Center" BackgroundColor="WhiteSmoke" />
+               HorizontalOptions="Center" BackgroundColor="WhiteSmoke" />
         <Button Text="Registro de Salud y Medicación" FontSize="Subtitle" TextColor="#f26638" FontAttributes="Italic" 
-                   HorizontalOptions="Center" BackgroundColor="WhiteSmoke" />
+               HorizontalOptions="Center" BackgroundColor="WhiteSmoke" />
         <Button Text="Consultas y Reportes" FontSize="Subtitle" TextColor="#f26638" FontAttributes="Italic" 
-                   HorizontalOptions="Center" BackgroundColor="WhiteSmoke" />
+               HorizontalOptions="Center" BackgroundColor="WhiteSmoke" />
+
     </StackLayout>
 
 </ContentPage>
