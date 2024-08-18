@@ -10,6 +10,12 @@ namespace AppmovilPFinal
             InitializeComponent();
         }
 
+        private async void GestionEstudiantesClicked(object sender, EventArgs e)
+        {
+            // Navega a la página de Gestión de Estudiantes
+            await Navigation.PushAsync(new GestionEstudiantes());
+        }
+
 
     }
 }
