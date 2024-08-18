@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppmovilPFinal.ControlAsistencia">
+
+    <StackLayout Padding="10">
+
+        <Label Text="Código del estudiante:" />
+        <Entry x:Name="studentCodeEntry" Placeholder="Ingrese código del estudiante" />
+
+        <Label Text="Fecha de la ausencia:" />
+        <DatePicker x:Name="absenceDatePicker" />
+
+        <Label Text="Hora de la ausencia:" />
+        <TimePicker x:Name="absenceTimePicker" />
+
+        <Button Text="Registrar Ausencia" Clicked="OnAddAbsenceClicked" />
+
+        <Label Text="Justificar Ausencia (Código):" />
+        <Entry x:Name="absenceCodeEntry" Placeholder="Ingrese código de la ausencia" />
+
+        <Button Text="Justificar" Clicked="OnJustifyAbsenceClicked" />
+
+        <Label Text="Ausencias Registradas:" />
+        <ListView x:Name="attendanceListView">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="{Binding Code}" FontAttributes="Bold" />
+                            <Label Text="{Binding Date}" />
+                            <Label Text="{Binding Time}" />
+                            <Label Text="{Binding IsJustified, StringFormat='Justificado: {0}'}" />
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+    </StackLayout>
+
+</ContentPage>
