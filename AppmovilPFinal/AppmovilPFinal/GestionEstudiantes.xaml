@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppmovilPFinal.GestionEstudiantes">
+
+    <StackLayout Padding="10">
+
+        <!-- Formulario para agregar/editar estudiantes -->
+        <Label Text="Código del estudiante:" />
+        <Entry x:Name="studentCodeEntry" Placeholder="Ingrese código" />
+
+        <Label Text="Nombre del estudiante:" />
+        <Entry x:Name="studentNameEntry" Placeholder="Ingrese nombre" />
+
+        <Label Text="Código del padre:" />
+        <Entry x:Name="parentCodeEntry" Placeholder="Ingrese código del padre" />
+
+        <Label Text="Nombre del padre:" />
+        <Entry x:Name="parentNameEntry" Placeholder="Ingrese nombre del padre" />
+
+        <Label Text="Imagen del estudiante:" />
+        <Button Text="Seleccionar Imagen" />
+
+        <!-- Botones de acción -->
+        <StackLayout Orientation="Horizontal" Spacing="10">
+            <Button Text="Agregar/Modificar" />
+            <Button Text="Eliminar" />
+        </StackLayout>
+
+        <!-- Lista de estudiantes -->
+        <Label Text="Lista de Estudiantes:" />
+        <ListView x:Name="studentsListView">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Text="{Binding Name}" Detail="{Binding Code}" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+    </StackLayout>
+</ContentPage>
