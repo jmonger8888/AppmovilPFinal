@@ -12,7 +12,7 @@
         <Button Text="Envío de Avisos" FontSize="Subtitle" TextColor="#f26638" FontAttributes="Italic" 
                HorizontalOptions="Center" BackgroundColor="WhiteSmoke" />
         <Button Text="Registro de Asistencia" FontSize="Subtitle" TextColor="#f26638" FontAttributes="Italic" 
-               HorizontalOptions="Center" BackgroundColor="WhiteSmoke" />
+               HorizontalOptions="Center" BackgroundColor="WhiteSmoke" Clicked="ControlAsistenciaClicked" />
         <Button Text="Registro de Salud y Medicación" FontSize="Subtitle" TextColor="#f26638" FontAttributes="Italic" 
                HorizontalOptions="Center" BackgroundColor="WhiteSmoke" />
         <Button Text="Consultas y Reportes" FontSize="Subtitle" TextColor="#f26638" FontAttributes="Italic" 

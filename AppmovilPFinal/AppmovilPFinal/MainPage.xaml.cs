@@ -16,7 +16,7 @@ namespace AppmovilPFinal
             await Navigation.PushAsync(new GestionEstudiantes());
         }
 
-        private async void ControlAsistencia(object sender, EventArgs e)
+        private async void ControlAsistenciaClicked(object sender, EventArgs e)
         {
             // Navega a la página de Gestión de Estudiantes
             await Navigation.PushAsync(new ControlAsistencia());
