@@ -14,16 +14,18 @@ namespace AppmovilPFinal
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Consultas : ContentPage
     {
-        public FirebaseClient firebaseClient;
-        public List<Attendance> absencesList;
+        //clases para desarrollar metodos
+        public FirebaseClient firebaseClient;//interactuar con firebase
+        public List<Attendance> absencesList;//cargar lista de ausencias
         public Consultas()
         {
+            //se incian los componentes osea el constructor
             InitializeComponent();
             firebaseClient = new FirebaseClient("https://proyectofinalmovil-ed3f4-default-rtdb.firebaseio.com");
             absencesList = new List<Attendance>();
         }
 
-        // Método para realizar la consulta
+        //Método para realizar la consulta
         public async void OnConsultClicked(object sender, EventArgs e)
         {
             if (!string.IsNullOrWhiteSpace(studentCodeEntry.Text))

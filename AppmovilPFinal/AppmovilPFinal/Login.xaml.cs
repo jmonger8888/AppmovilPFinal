@@ -18,12 +18,13 @@ namespace AppmovilPFinal
         {
             InitializeComponent();
         }
-        private async void OnRegisterLabelTapped(object sender, EventArgs e)
+        public async void OnRegisterLabelTapped(object sender, EventArgs e)
         {
-            // Navegar a la página de registro
+            //Navegar a la página de registro
             await Navigation.PushAsync(new Registro());
         }
-        private async void OnLoginButtonClicked(object sender, EventArgs e)
+        //por medio del firebase auth verifica si el usuario existe y se procede hacer login 
+        public async void OnLoginButtonClicked(object sender, EventArgs e)
         {
             string email = UsernameEntry.Text;
             string password = PasswordEntry.Text;

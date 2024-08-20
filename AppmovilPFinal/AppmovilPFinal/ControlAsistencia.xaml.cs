@@ -14,8 +14,9 @@ namespace AppmovilPFinal
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ControlAsistencia : ContentPage
     {
-        public FirebaseClient firebaseClient;
-        public List<Attendance> attendanceList;
+        //clases para los metodos
+        public FirebaseClient firebaseClient;//interaccion con firebase
+        public List<Attendance> attendanceList;//lista de asistencia
 
         public ControlAsistencia()
         {
@@ -25,7 +26,7 @@ namespace AppmovilPFinal
             CargarAusencias();
         }
 
-        // Método para cargar las ausencias desde Firebase
+        //Método para cargar las ausencias desde Firebase por si ya hay existentes en la base de dtos
         public async void CargarAusencias()
         {
             var ausencias = await firebaseClient
@@ -45,7 +46,7 @@ namespace AppmovilPFinal
             attendanceListView.ItemsSource = attendanceList;
         }
 
-        // Método para registrar una nueva ausencia
+        //Método para registrar una nueva ausencia en la base de datos y mostrarla en la lista
         public async void OnAddAbsenceClicked(object sender, EventArgs e)
         {
             var newAttendance = new Attendance
@@ -61,19 +62,19 @@ namespace AppmovilPFinal
                 .Child("Ausencias")
                 .PostAsync(newAttendance);
 
-            newAttendance.Id = addedAttendance.Key; // Asignar la clave generada por Firebase
+            newAttendance.Id = addedAttendance.Key; 
 
             attendanceList.Add(newAttendance);
-            attendanceListView.ItemsSource = null;  // Reset del ItemsSource
+            attendanceListView.ItemsSource = null;  
             attendanceListView.ItemsSource = attendanceList;
 
             LimpiarFormulario();
 
-            // Mostrar mensaje de confirmación
+            //mensaje de confirmación
             await DisplayAlert("Éxito", "Ausencia registrada correctamente", "OK");
         }
 
-        // Método para justificar una ausencia seleccionada
+        //Método para justificar una ausencia seleccionada
         public async void OnJustifyAbsenceClicked(object sender, EventArgs e)
         {
             if (!string.IsNullOrWhiteSpace(absenceCodeEntry.Text))
@@ -83,7 +84,7 @@ namespace AppmovilPFinal
                 {
                     absenceToJustify.IsJustified = true;
 
-                    // Actualizar en Firebase
+                    //Actualizar en Firebase
                     await firebaseClient
                         .Child("Ausencias")
                         .Child(absenceToJustify.Id)
@@ -106,7 +107,7 @@ namespace AppmovilPFinal
             }
         }
 
-        // Método para seleccionar una ausencia de la lista y cargar su información en el campo de justificación
+        //Método para seleccionar una ausencia de la lista y cargar su información en el campo de justificación
         public void OnAttendanceSelected(object sender, SelectedItemChangedEventArgs e)
         {
             if (e.SelectedItem != null)
@@ -119,7 +120,7 @@ namespace AppmovilPFinal
             }
         }
 
-        // Método para limpiar el formulario
+        //Método para limpiar el formulario
         public void LimpiarFormulario()
         {
             studentCodeEntry.Text = string.Empty;
@@ -129,12 +130,12 @@ namespace AppmovilPFinal
         }
     }
 
-    // Modelo de datos para Attendance
+    //Modelo de datos para Attendance
     public class Attendance
     {
-        public string Id { get; set; }  // ID generado por Firebase
+        public string Id { get; set; }  
         public string Code { get; set; }
-        public string StudentName { get; set; }  // Nombre del estudiante
+        public string StudentName { get; set; } 
         public DateTime Date { get; set; }
         public TimeSpan Time { get; set; }
         public bool IsJustified { get; set; }

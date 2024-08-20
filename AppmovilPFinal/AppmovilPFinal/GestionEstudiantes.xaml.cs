@@ -14,16 +14,18 @@ namespace AppmovilPFinal
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class GestionEstudiantes : ContentPage
     {
-        public FirebaseClient firebaseClient;
-        public Estudiante estudianteSeleccionado;
+        //clases requeridas
+        public FirebaseClient firebaseClient;//interaccion con firebase
+        public Estudiante estudianteSeleccionado;//cuando se seleccionan los estudiantes en la lista
         public GestionEstudiantes()
         {
+            //contructor que inicia todo
             InitializeComponent();
 
             firebaseClient = new FirebaseClient("https://proyectofinalmovil-ed3f4-default-rtdb.firebaseio.com");
             CargarEstudiantes();
         }
-
+        //metodo para seleccionar una imagen des dispositivo
         public async void OnSelectImageClicked(object sender, EventArgs e)
         {
             try
@@ -46,6 +48,7 @@ namespace AppmovilPFinal
             }
         }
 
+        //carga los estudiantes que ya estas registrados en la bd y los muestra en la lista
         public async void CargarEstudiantes()
         {
             var estudiantes = await ObtenerEstudiantesAsync();
@@ -68,7 +71,7 @@ namespace AppmovilPFinal
             }).ToList();
         }
 
-        // Método para agregar un estudiante
+        // Método para agregar un estudiante nuevo a la base de datos
         public async void OnAddClicked(object sender, EventArgs e)
         {
             var nuevoEstudiante = new Estudiante
@@ -86,12 +89,19 @@ namespace AppmovilPFinal
             CargarEstudiantes();
         }
 
-        // Método para modificar un estudiante existente
+        //Método para modificar un estudiante existente
         public async void OnModifyClicked(object sender, EventArgs e)
         {
             if (estudianteSeleccionado != null)
             {
-                estudianteSeleccionado.Codigo = studentCodeEntry.Text;
+                // Verificar si el código del estudiante ha cambiado
+                if (estudianteSeleccionado.Codigo != studentCodeEntry.Text)
+                {
+                    await DisplayAlert("Error", "No se puede modificar el código del estudiante", "OK");
+                    return; // Detener el proceso si el código ha cambiado
+                }
+
+                // Actualizar los otros campos
                 estudianteSeleccionado.Nombre = studentNameEntry.Text;
                 estudianteSeleccionado.CodigoPadre = parentCodeEntry.Text;
                 estudianteSeleccionado.NombrePadre = parentNameEntry.Text;
@@ -128,7 +138,7 @@ namespace AppmovilPFinal
             }
         }
 
-        // Método para eliminar un estudiante
+        //Método para eliminar un estudiante
         public async void OnDeleteClicked(object sender, EventArgs e)
         {
             if (estudianteSeleccionado != null)
@@ -158,7 +168,7 @@ namespace AppmovilPFinal
             }
         }
 
-        // Método para limpiar el formulario
+        //Método para limpiar el formulario desdues de ejecutar algun metodo
         public void LimpiarFormulario()
         {
             studentCodeEntry.Text = string.Empty;
@@ -168,20 +178,20 @@ namespace AppmovilPFinal
             estudianteSeleccionado = null;
         }
 
-        // Método para seleccionar un estudiante de la lista y cargar su información en el formulario
+        //Método para seleccionar un estudiante de la lista y cargar su información en el formulario
         public void studentsListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             if (e.SelectedItem != null)
             {
                 estudianteSeleccionado = e.SelectedItem as Estudiante;
 
-                // Llenar los campos del formulario con los datos del estudiante seleccionado
+                
                 studentCodeEntry.Text = estudianteSeleccionado.Codigo;
                 studentNameEntry.Text = estudianteSeleccionado.Nombre;
                 parentCodeEntry.Text = estudianteSeleccionado.CodigoPadre;
                 parentNameEntry.Text = estudianteSeleccionado.NombrePadre;
 
-                // Limpiar la selección para que se pueda volver a seleccionar el mismo elemento si es necesario
+                //Limpia la selección para que se pueda volver a seleccionar un elemento 
                 studentsListView.SelectedItem = null;
             }
         }

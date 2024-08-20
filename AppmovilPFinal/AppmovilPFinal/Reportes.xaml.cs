@@ -13,18 +13,22 @@ namespace AppmovilPFinal
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Reportes : ContentPage
     {
-        public FirebaseClient firebaseClient;
-        public List<Reporte> reportesList;
+        //son las clases declaradas
+        public FirebaseClient firebaseClient;//para interactuar con la bd
+        public List<Reporte> reportesList;//almacena los reportes recuperados de firebase
+        private Reporte reporteSeleccionadoActual;//es para el metodo cuando se seleccionan los resportes desde la lista
 
         public Reportes()
         {
+            //contructor de la clase para inicializar los revicios y cargarlos
             InitializeComponent();
             firebaseClient = new FirebaseClient("https://proyectofinalmovil-ed3f4-default-rtdb.firebaseio.com");
             reportesList = new List<Reporte>();
             CargarReportes();
         }
 
-        // Método para cargar los reportes desde Firebase
+        //Método para cargar los reportes desde Firebasem por si hay reportes existentes 
+        //y que se carguen en la lista y sean visibles
         public async void CargarReportes()
         {
             var reportes = await firebaseClient
@@ -42,7 +46,7 @@ namespace AppmovilPFinal
             reportsListView.ItemsSource = reportesList;
         }
 
-        // Método para agregar un nuevo reporte
+        //Método para agregar un nuevo reporte y que sea cargado en firebase
         public async void OnAddReporteClicked(object sender, EventArgs e)
         {
             var nuevoReporte = new Reporte
@@ -75,7 +79,8 @@ namespace AppmovilPFinal
             }
         }
 
-        // Método para seleccionar un reporte de la lista y cargar su información en el formulario
+        //Método para seleccionar un reporte de la lista y cargar su información en el formulario
+        //en sus inputs correspondientes
         public void OnReporteSelected(object sender, SelectedItemChangedEventArgs e)
         {
             if (e.SelectedItem != null)
@@ -85,15 +90,15 @@ namespace AppmovilPFinal
                 reportDateEntry.Text = reporteSeleccionado.Date;
                 reportDescriptionEditor.Text = reporteSeleccionado.Description;
 
-                // Guardar el reporte seleccionado para la actualización
+                //Guardar el reporte seleccionado para la actualización
                 reporteSeleccionadoActual = reporteSeleccionado;
 
-                // Limpiar selección
+                //Limpiar selección donde estan los inputs para que no queden datos
                 reportsListView.SelectedItem = null;
             }
         }
 
-        // Método para actualizar un reporte existente
+        //Método para actualizar un reporte existente y realizar los cambios deceados
         public async void OnUpdateReporteClicked(object sender, EventArgs e)
         {
             if (reporteSeleccionadoActual != null)
@@ -104,13 +109,13 @@ namespace AppmovilPFinal
 
                 try
                 {
-                    // Actualizar en Firebase
+                    //Actualizar en Firebase
                     await firebaseClient
                         .Child("Reportes")
                         .Child(reporteSeleccionadoActual.Id)
                         .PutAsync(reporteSeleccionadoActual);
 
-                    // Refrescar la lista
+                    //Refrescar la lista
                     reportsListView.ItemsSource = null;
                     reportsListView.ItemsSource = reportesList;
 
@@ -129,7 +134,7 @@ namespace AppmovilPFinal
             }
         }
 
-        // Método para limpiar el formulario
+        //Método para limpiar el formulario
         public void LimpiarFormulario()
         {
             reportTitleEntry.Text = string.Empty;
@@ -138,16 +143,13 @@ namespace AppmovilPFinal
             reporteSeleccionadoActual = null;
         }
 
-        // Modelo de datos para Reporte
+        //Modelo de datos para Reporte
         public class Reporte
         {
-            public string Id { get; set; }  // ID generado por Firebase
+            public string Id { get; set; } //ID generado por Firebase
             public string Title { get; set; }
             public string Date { get; set; }
             public string Description { get; set; }
         }
-
-        // Variable para almacenar el reporte seleccionado
-        private Reporte reporteSeleccionadoActual;
     }
 }

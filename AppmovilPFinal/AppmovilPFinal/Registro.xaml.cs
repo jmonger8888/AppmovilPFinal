@@ -17,7 +17,8 @@ namespace AppmovilPFinal
         {
             InitializeComponent();
         }
-        private async void OnRegisterButtonClicked(object sender, EventArgs e)
+        //evento del boton creado en el xaml para registrar usuarios
+        public async void OnRegisterButtonClicked(object sender, EventArgs e)
         {
             string email = UsernameEntry.Text;
             string password = PasswordEntry.Text;
@@ -31,17 +32,17 @@ namespace AppmovilPFinal
             try
             {
                 Console.WriteLine("Registrando nuevo usuario en Firebase...");
-
+                //link de firebase del proyecto de la API
                 var authProvider = new FirebaseAuthProvider(new FirebaseConfig("AIzaSyAqASqMwQkDgjD5PovIehR7pwZPtcBGiQk"));
                 var auth = await authProvider.CreateUserWithEmailAndPasswordAsync(email, password);
                 var firebaseToken = auth.FirebaseToken;
 
                 Console.WriteLine("Registro exitoso. Token: " + firebaseToken);
 
-                // Muestra un mensaje de éxito al usuario
+                //alerta de que el usuario se creo correctamente
                 await DisplayAlert("Registro exitoso", "El usuario ha sido registrado correctamente.", "OK");
 
-                // Opcional: Navegar a otra página o limpiar los campos
+              
                 UsernameEntry.Text = string.Empty;
                 PasswordEntry.Text = string.Empty;
                 await Navigation.PushAsync(new Login());
