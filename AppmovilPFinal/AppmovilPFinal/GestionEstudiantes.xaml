@@ -26,15 +26,15 @@
         </Style>
 
         <Style x:Key="ButtonStyle" TargetType="Button">
-            <Setter Property="FontSize" Value="18" />
+            <Setter Property="FontSize" Value="13" />
             <Setter Property="TextColor" Value="#f26638" />
             <Setter Property="FontAttributes" Value="Italic" />
-            <Setter Property="HorizontalOptions" Value="FillAndExpand" />
             <Setter Property="BackgroundColor" Value="White" />
-            <Setter Property="CornerRadius" Value="10" />
-            <Setter Property="Margin" Value="10,5" />
-            <Setter Property="Padding" Value="15" />
+            <Setter Property="CornerRadius" Value="5" />
+            <Setter Property="Margin" Value="5" />
+            <Setter Property="Padding" Value="5,10" />
         </Style>
+
 
         <Style x:Key="CardStyle" TargetType="Frame">
             <Setter Property="HasShadow" Value="True" />
@@ -46,71 +46,73 @@
     </ContentPage.Resources>
 
     <!-- Contenedor principal con dos secciones -->
-    <StackLayout Padding="20" Spacing="15" VerticalOptions="FillAndExpand">
+    <ScrollView Padding="20">
+        <StackLayout Spacing="15" VerticalOptions="FillAndExpand">
 
-        <!-- Título en la parte superior -->
-        <Label Text="Gestión de Estudiantes" Style="{StaticResource TitleLabelStyle}" />
+            <!-- Título en la parte superior -->
+            <Label Text="Gestión de Estudiantes" Style="{StaticResource TitleLabelStyle}" />
 
-        <!-- Formulario para agregar/editar estudiantes dentro de una tarjeta -->
-        <Frame Style="{StaticResource CardStyle}">
-            <StackLayout Padding="10">
+            <!-- Formulario para agregar/editar estudiantes dentro de una tarjeta -->
+            <Frame Style="{StaticResource CardStyle}">
+                <StackLayout Padding="10">
 
-                <StackLayout Style="{StaticResource EntryContainerStyle}">
-                    <Label Text="Código del estudiante:" />
-                    <Entry x:Name="studentCodeEntry" Placeholder="Ingrese código" Style="{StaticResource EntryStyle}" />
+                    <StackLayout Style="{StaticResource EntryContainerStyle}">
+                        <Label Text="Código del estudiante:" />
+                        <Entry x:Name="studentCodeEntry" Placeholder="Ingrese código" Style="{StaticResource EntryStyle}" />
+                    </StackLayout>
+
+                    <StackLayout Style="{StaticResource EntryContainerStyle}">
+                        <Label Text="Nombre del estudiante:" />
+                        <Entry x:Name="studentNameEntry" Placeholder="Ingrese nombre" Style="{StaticResource EntryStyle}" />
+                    </StackLayout>
+
+                    <StackLayout Style="{StaticResource EntryContainerStyle}">
+                        <Label Text="Código del padre:" />
+                        <Entry x:Name="parentCodeEntry" Placeholder="Ingrese código del padre" Style="{StaticResource EntryStyle}" />
+                    </StackLayout>
+
+                    <StackLayout Style="{StaticResource EntryContainerStyle}">
+                        <Label Text="Nombre del padre:" />
+                        <Entry x:Name="parentNameEntry" Placeholder="Ingrese nombre del padre" Style="{StaticResource EntryStyle}" />
+                    </StackLayout>
+
+                    <Label Text="Imagen del estudiante:" />
+                    <Button Text="Seleccionar Imagen" Clicked="OnSelectImageClicked" Style="{StaticResource ButtonStyle}" />
+
+                    <!-- Botones de acción en una cuadrícula para ajuste de tamaño -->
+                    <Grid Padding="10" ColumnSpacing="10" RowSpacing="10" VerticalOptions="Fill">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                        <Button Text="AGREGAR" Clicked="OnAddClicked" Style="{StaticResource ButtonStyle}" Grid.Column="0" />
+                        <Button Text="MODIFICAR" Clicked="OnModifyClicked" Style="{StaticResource ButtonStyle}" Grid.Column="1" />
+                        <Button Text="ELIMINAR" Clicked="OnDeleteClicked" Style="{StaticResource ButtonStyle}" Grid.Column="2" />
+                    </Grid>
+
                 </StackLayout>
+            </Frame>
 
-                <StackLayout Style="{StaticResource EntryContainerStyle}">
-                    <Label Text="Nombre del estudiante:" />
-                    <Entry x:Name="studentNameEntry" Placeholder="Ingrese nombre" Style="{StaticResource EntryStyle}" />
+            <!-- Lista de estudiantes dentro de una tarjeta -->
+            <Frame Style="{StaticResource CardStyle}">
+                <StackLayout Padding="10" Spacing="10" VerticalOptions="FillAndExpand">
+                    <Label Text="Lista de Estudiantes:" />
+                    <ListView x:Name="studentsListView" ItemSelected="studentsListView_ItemSelected" VerticalOptions="FillAndExpand">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <TextCell Text="{Binding Nombre}" Detail="{Binding Codigo}" />
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
                 </StackLayout>
+            </Frame>
 
-                <StackLayout Style="{StaticResource EntryContainerStyle}">
-                    <Label Text="Código del padre:" />
-                    <Entry x:Name="parentCodeEntry" Placeholder="Ingrese código del padre" Style="{StaticResource EntryStyle}" />
-                </StackLayout>
-
-                <StackLayout Style="{StaticResource EntryContainerStyle}">
-                    <Label Text="Nombre del padre:" />
-                    <Entry x:Name="parentNameEntry" Placeholder="Ingrese nombre del padre" Style="{StaticResource EntryStyle}" />
-                </StackLayout>
-
-                <Label Text="Imagen del estudiante:" />
-                <Button Text="Seleccionar Imagen" Clicked="OnSelectImageClicked" Style="{StaticResource ButtonStyle}" />
-
-                <!-- Botones de acción en una cuadrícula para ajuste de tamaño -->
-                <Grid Padding="10" ColumnSpacing="10" RowSpacing="10" VerticalOptions="Fill" HeightRequest="150">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
-
-                    <Button Text="Agregar" Clicked="OnAddClicked" Style="{StaticResource ButtonStyle}" Grid.Column="0" />
-                    <Button Text="Modificar" Clicked="OnModifyClicked" Style="{StaticResource ButtonStyle}" Grid.Column="1" />
-                    <Button Text="Eliminar" Clicked="OnDeleteClicked" Style="{StaticResource ButtonStyle}" Grid.Column="2" />
-                </Grid>
-
-            </StackLayout>
-        </Frame>
-
-        <!-- Lista de estudiantes dentro de una tarjeta -->
-        <Frame Style="{StaticResource CardStyle}">
-            <StackLayout Padding="10">
-                <Label Text="Lista de Estudiantes:" />
-                <ListView x:Name="studentsListView" ItemSelected="studentsListView_ItemSelected">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <TextCell Text="{Binding Nombre}" Detail="{Binding Codigo}" />
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-            </StackLayout>
-        </Frame>
-
-    </StackLayout>
+        </StackLayout>
+    </ScrollView>
 
 </ContentPage>
