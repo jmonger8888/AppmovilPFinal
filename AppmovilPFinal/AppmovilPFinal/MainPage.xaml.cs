@@ -18,10 +18,21 @@ namespace AppmovilPFinal
 
         private async void ControlAsistenciaClicked(object sender, EventArgs e)
         {
-            // Navega a la página de Gestión de Estudiantes
+            // Navega a la página de Control de asistencia
             await Navigation.PushAsync(new ControlAsistencia());
         }
 
+        private async void ConsultasClicked(object sender, EventArgs e)
+        {
+            // Navega a la página de Consultas
+            await Navigation.PushAsync(new Consultas());
+        }
+
+        /*private async void ReportesClicked(object sender, EventArgs e)
+        {
+            // Navega a la página de Gestión de Estudiantes
+            await Navigation.PushAsync(new Reportes());
+        }*/
 
     }
 }

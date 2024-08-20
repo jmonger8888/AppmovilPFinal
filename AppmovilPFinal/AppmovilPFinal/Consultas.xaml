@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppmovilPFinal.Consultas">
+    <StackLayout Padding="10">
+
+
+        <Label Text="Código del estudiante:" />
+        <Entry x:Name="studentCodeEntry" Placeholder="Ingrese código del carnet" />
+
+
+        <Button Text="Consultar" />
+
+
+        <Label Text="Ausencias:" FontAttributes="Bold" />
+        <ListView x:Name="absencesListView">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal" Spacing="10">
+                            <Label Text="{Binding Date}" />
+                            <Label Text="{Binding IsJustified, Converter={StaticResource BoolToJustificationConverter}}" />
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+    </StackLayout>
+</ContentPage>

@@ -37,7 +37,8 @@
             TextColor="#f26638"
             FontAttributes="Italic"
             HorizontalOptions="Center"
-            BackgroundColor="WhiteSmoke" />
+            BackgroundColor="WhiteSmoke"
+            Clicked="ConsultasClicked" />
 
         <Button
             Text="Reportes"
