@@ -85,7 +85,9 @@
 
                 <Button 
                     Text="Reportes" 
-                    Style="{StaticResource MenuButtonStyle}" />
+                    Style="{StaticResource MenuButtonStyle}" 
+                    Clicked="ReportesClicked" />
+                
             </StackLayout>
         </Frame>
 

@@ -8,8 +8,8 @@
         <!-- Logo -->
         <Image Source="Logo.png"
        HorizontalOptions="Center"
-       HeightRequest="150" 
-       WidthRequest="150"
+       HeightRequest="250" 
+       WidthRequest="250"
        Aspect="AspectFit"/>
 
 

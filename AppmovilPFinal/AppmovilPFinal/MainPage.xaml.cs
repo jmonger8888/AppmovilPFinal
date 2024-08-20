@@ -28,11 +28,11 @@ namespace AppmovilPFinal
             await Navigation.PushAsync(new Consultas());
         }
 
-        /*private async void ReportesClicked(object sender, EventArgs e)
+        private async void ReportesClicked(object sender, EventArgs e)
         {
             // Navega a la página de Gestión de Estudiantes
             await Navigation.PushAsync(new Reportes());
-        }*/
+        }
 
     }
 }

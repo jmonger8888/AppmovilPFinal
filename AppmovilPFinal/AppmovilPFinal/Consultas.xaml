@@ -1,31 +1,91 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="AppmovilPFinal.Consultas">
-    <StackLayout Padding="10">
+             x:Class="AppmovilPFinal.Consultas"
+             BackgroundColor="#f8f5ec">
 
+    <!-- Estilos -->
+    <ContentPage.Resources>
+        <Style x:Key="TitleLabelStyle" TargetType="Label">
+            <Setter Property="FontSize" Value="24" />
+            <Setter Property="TextColor" Value="#cb6ce6" />
+            <Setter Property="FontAttributes" Value="Bold" />
+            <Setter Property="HorizontalOptions" Value="Center" />
+            <Setter Property="VerticalOptions" Value="Center" />
+            <Setter Property="Margin" Value="0,0,0,20" />
+        </Style>
 
-        <Label Text="Código del estudiante:" />
-        <Entry x:Name="studentCodeEntry" Placeholder="Ingrese código del estudiante" />
+        <Style x:Key="EntryContainerStyle" TargetType="StackLayout">
+            <Setter Property="Padding" Value="10" />
+            <Setter Property="Margin" Value="0,5" />
+        </Style>
 
+        <Style x:Key="EntryStyle" TargetType="Entry">
+            <Setter Property="FontSize" Value="18" />
+            <Setter Property="BackgroundColor" Value="White" />
+        </Style>
 
-        <Button Text="Consultar" Clicked="OnConsultClicked"/>
+        <Style x:Key="ButtonStyle" TargetType="Button">
+            <Setter Property="FontSize" Value="13" />
+            <Setter Property="TextColor" Value="#f26638" />
+            <Setter Property="FontAttributes" Value="Italic" />
+            <Setter Property="BackgroundColor" Value="White" />
+            <Setter Property="CornerRadius" Value="5" />
+            <Setter Property="Margin" Value="5" />
+            <Setter Property="Padding" Value="5,10" />
+        </Style>
 
+        <Style x:Key="CardStyle" TargetType="Frame">
+            <Setter Property="HasShadow" Value="True" />
+            <Setter Property="CornerRadius" Value="10" />
+            <Setter Property="Padding" Value="20" />
+            <Setter Property="BackgroundColor" Value="White" />
+            <Setter Property="BorderColor" Value="#b0bec5" />
+        </Style>
+    </ContentPage.Resources>
 
-        <Label Text="Ausencias:" FontAttributes="Bold" />
-        <ListView x:Name="absencesListView">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <StackLayout Orientation="Horizontal" Spacing="10">
-                            <Label Text="{Binding StudentName}" />
-                            <Label Text="{Binding Date, StringFormat='{0:dd/MM/yyyy}'}" />
-                            <Label Text="{Binding IsJustified, StringFormat='Justificado: {0}'}" />
-                        </StackLayout>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+    <!-- Contenido principal -->
+    <ScrollView Padding="20">
+        <StackLayout Spacing="15" VerticalOptions="FillAndExpand">
 
-    </StackLayout>
+            <!-- Título en la parte superior -->
+            <Label Text="Consultas" Style="{StaticResource TitleLabelStyle}" />
+
+            <!-- Formulario de consulta dentro de una tarjeta -->
+            <Frame Style="{StaticResource CardStyle}">
+                <StackLayout Padding="10">
+
+                    <StackLayout Style="{StaticResource EntryContainerStyle}">
+                        <Label Text="Código del estudiante:" />
+                        <Entry x:Name="studentCodeEntry" Placeholder="Ingrese código del estudiante" Style="{StaticResource EntryStyle}" />
+                    </StackLayout>
+
+                    <Button Text="Consultar" Clicked="OnConsultClicked" Style="{StaticResource ButtonStyle}" />
+
+                </StackLayout>
+            </Frame>
+
+            <!-- Lista de ausencias dentro de una tarjeta -->
+            <Frame Style="{StaticResource CardStyle}">
+                <StackLayout Padding="10" Spacing="10" VerticalOptions="FillAndExpand">
+                    <Label Text="Ausencias:" FontAttributes="Bold" />
+                    <ListView x:Name="absencesListView" VerticalOptions="FillAndExpand">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <StackLayout Orientation="Horizontal" Spacing="10">
+                                        <Label Text="{Binding StudentName}" />
+                                        <Label Text="{Binding Date, StringFormat='{0:dd/MM/yyyy}'}" />
+                                        <Label Text="{Binding IsJustified, StringFormat='Justificado: {0}'}" />
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+            </Frame>
+
+        </StackLayout>
+    </ScrollView>
+
 </ContentPage>

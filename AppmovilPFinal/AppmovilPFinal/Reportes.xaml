@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="AppmovilPFinal.ControlAsistencia"
+             x:Class="AppmovilPFinal.Reportes"
              BackgroundColor="#f8f5ec">
 
     <!-- Estilos -->
@@ -25,6 +25,11 @@
             <Setter Property="BackgroundColor" Value="White" />
         </Style>
 
+        <Style x:Key="EditorStyle" TargetType="Editor">
+            <Setter Property="FontSize" Value="18" />
+            <Setter Property="BackgroundColor" Value="White" />
+        </Style>
+
         <Style x:Key="ButtonStyle" TargetType="Button">
             <Setter Property="FontSize" Value="13" />
             <Setter Property="TextColor" Value="#f26638" />
@@ -44,64 +49,57 @@
         </Style>
     </ContentPage.Resources>
 
-    <!-- Contenedor principal -->
+    <!-- Contenedor principal con dos secciones -->
     <ScrollView Padding="20">
         <StackLayout Spacing="15" VerticalOptions="FillAndExpand">
 
             <!-- Título en la parte superior -->
-            <Label Text="Control de Asistencia" Style="{StaticResource TitleLabelStyle}" />
+            <Label Text="Reportes" Style="{StaticResource TitleLabelStyle}" />
 
-            <!-- Formulario de control de asistencia dentro de una tarjeta -->
+            <!-- Formulario para agregar un reporte dentro de una tarjeta -->
             <Frame Style="{StaticResource CardStyle}">
                 <StackLayout Padding="10">
 
                     <StackLayout Style="{StaticResource EntryContainerStyle}">
-                        <Label Text="Código del estudiante:" />
-                        <Entry x:Name="studentCodeEntry" Placeholder="Ingrese código del estudiante" Style="{StaticResource EntryStyle}" />
+                        <Label Text="Título del reporte:" />
+                        <Entry x:Name="reportTitleEntry" Placeholder="Ingrese título" Style="{StaticResource EntryStyle}" />
                     </StackLayout>
 
                     <StackLayout Style="{StaticResource EntryContainerStyle}">
-                        <Label Text="Nombre del estudiante:" />
-                        <Entry x:Name="studentNameEntry" Placeholder="Ingrese nombre del estudiante" Style="{StaticResource EntryStyle}" />
+                        <Label Text="Fecha del reporte:" />
+                        <Entry x:Name="reportDateEntry" Placeholder="Ingrese fecha" Style="{StaticResource EntryStyle}" />
                     </StackLayout>
 
                     <StackLayout Style="{StaticResource EntryContainerStyle}">
-                        <Label Text="Fecha de la ausencia:" />
-                        <DatePicker x:Name="absenceDatePicker" />
+                        <Label Text="Descripción del reporte:" />
+                        <Editor x:Name="reportDescriptionEditor" Placeholder="Ingrese descripción" Style="{StaticResource EditorStyle}" HeightRequest="150" />
                     </StackLayout>
 
-                    <StackLayout Style="{StaticResource EntryContainerStyle}">
-                        <Label Text="Hora de la ausencia:" />
-                        <TimePicker x:Name="absenceTimePicker" />
-                    </StackLayout>
+                    <!-- Botones de acción en una cuadrícula para ajuste de tamaño -->
+                    <Grid Padding="10" ColumnSpacing="10" RowSpacing="10" VerticalOptions="Fill">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
 
-                    <Button Text="Registrar Ausencia" Clicked="OnAddAbsenceClicked" Style="{StaticResource ButtonStyle}" />
-
-                    <StackLayout Style="{StaticResource EntryContainerStyle}">
-                        <Label Text="Justificar Ausencia (Código):" />
-                        <Entry x:Name="absenceCodeEntry" Placeholder="Ingrese código del estudiante" Style="{StaticResource EntryStyle}" />
-                    </StackLayout>
-
-                    <Button Text="Justificar" Clicked="OnJustifyAbsenceClicked" Style="{StaticResource ButtonStyle}" />
+                        <Button Text="AGREGAR"  Style="{StaticResource ButtonStyle}" Grid.Column="0" />
+                        <Button Text="ACTUALIZAR"  Style="{StaticResource ButtonStyle}" Grid.Column="1" />
+                    </Grid>
 
                 </StackLayout>
             </Frame>
 
-            <!-- Lista de ausencias registradas dentro de una tarjeta -->
+            <!-- Lista de reportes dentro de una tarjeta -->
             <Frame Style="{StaticResource CardStyle}">
                 <StackLayout Padding="10" Spacing="10" VerticalOptions="FillAndExpand">
-                    <Label Text="Ausencias Registradas:" />
-                    <ListView x:Name="attendanceListView" ItemSelected="OnAttendanceSelected" VerticalOptions="FillAndExpand">
+                    <Label Text="Lista de Reportes:" />
+                    <ListView x:Name="reportsListView" VerticalOptions="FillAndExpand">
                         <ListView.ItemTemplate>
                             <DataTemplate>
-                                <ViewCell>
-                                    <StackLayout Orientation="Horizontal">
-                                        <Label Text="{Binding Code}" FontAttributes="Bold" />
-                                        <Label Text="{Binding StudentName}" />
-                                        <Label Text="{Binding Date}" />
-                                        <Label Text="{Binding IsJustified, StringFormat='Justificado: {0}'}" />
-                                    </StackLayout>
-                                </ViewCell>
+                                <TextCell Text="{Binding Title}" Detail="{Binding Date}" />
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
