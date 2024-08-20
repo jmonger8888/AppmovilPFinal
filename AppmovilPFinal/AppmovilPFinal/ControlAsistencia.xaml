@@ -14,12 +14,12 @@
         <Label Text="Hora de la ausencia:" />
         <TimePicker x:Name="absenceTimePicker" />
 
-        <Button Text="Registrar Ausencia" Clicked="OnAddAbsenceClicked" />
+        <Button Text="Registrar Ausencia" />
 
         <Label Text="Justificar Ausencia (Código):" />
         <Entry x:Name="absenceCodeEntry" Placeholder="Ingrese código de la ausencia" />
 
-        <Button Text="Justificar" Clicked="OnJustifyAbsenceClicked" />
+        <Button Text="Justificar" />
 
         <Label Text="Ausencias Registradas:" />
         <ListView x:Name="attendanceListView">
