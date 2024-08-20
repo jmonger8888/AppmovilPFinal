@@ -6,10 +6,10 @@
 
 
         <Label Text="Código del estudiante:" />
-        <Entry x:Name="studentCodeEntry" Placeholder="Ingrese código del carnet" />
+        <Entry x:Name="studentCodeEntry" Placeholder="Ingrese código del estudiante" />
 
 
-        <Button Text="Consultar" />
+        <Button Text="Consultar" Clicked="OnConsultClicked"/>
 
 
         <Label Text="Ausencias:" FontAttributes="Bold" />
@@ -18,8 +18,9 @@
                 <DataTemplate>
                     <ViewCell>
                         <StackLayout Orientation="Horizontal" Spacing="10">
-                            <Label Text="{Binding Date}" />
-                            <Label Text="{Binding IsJustified, Converter={StaticResource BoolToJustificationConverter}}" />
+                            <Label Text="{Binding StudentName}" />
+                            <Label Text="{Binding Date, StringFormat='{0:dd/MM/yyyy}'}" />
+                            <Label Text="{Binding IsJustified, StringFormat='Justificado: {0}'}" />
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>
