@@ -8,28 +8,32 @@
         <Label Text="Código del estudiante:" />
         <Entry x:Name="studentCodeEntry" Placeholder="Ingrese código del estudiante" />
 
+        <Label Text="Nombre del estudiante:" />
+        <Entry x:Name="studentNameEntry" Placeholder="Ingrese nombre del estudiante" />
+
         <Label Text="Fecha de la ausencia:" />
         <DatePicker x:Name="absenceDatePicker" />
 
         <Label Text="Hora de la ausencia:" />
         <TimePicker x:Name="absenceTimePicker" />
 
-        <Button Text="Registrar Ausencia" />
+        <Button Text="Registrar Ausencia" Clicked="OnAddAbsenceClicked" />
 
         <Label Text="Justificar Ausencia (Código):" />
-        <Entry x:Name="absenceCodeEntry" Placeholder="Ingrese código de la ausencia" />
+        <Entry x:Name="absenceCodeEntry" Placeholder="Ingrese código del estudiante" />
 
-        <Button Text="Justificar" />
+        <Button Text="Justificar" Clicked="OnJustifyAbsenceClicked"/>
 
         <Label Text="Ausencias Registradas:" />
-        <ListView x:Name="attendanceListView">
+        <ListView x:Name="attendanceListView" ItemSelected="OnAttendanceSelected">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
                         <StackLayout Orientation="Horizontal">
                             <Label Text="{Binding Code}" FontAttributes="Bold" />
+                            <Label Text="{Binding StudentName}" />
                             <Label Text="{Binding Date}" />
-                            <Label Text="{Binding Time}" />
+       
                             <Label Text="{Binding IsJustified, StringFormat='Justificado: {0}'}" />
                         </StackLayout>
                     </ViewCell>
