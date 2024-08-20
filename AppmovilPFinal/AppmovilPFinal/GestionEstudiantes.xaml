@@ -19,20 +19,21 @@
         <Entry x:Name="parentNameEntry" Placeholder="Ingrese nombre del padre" />
 
         <Label Text="Imagen del estudiante:" />
-        <Button Text="Seleccionar Imagen" />
+        <Button Text="Seleccionar Imagen" Clicked="OnSelectImageClicked" />
 
         <!-- Botones de acción -->
         <StackLayout Orientation="Horizontal" Spacing="10">
-            <Button Text="Agregar/Modificar" />
-            <Button Text="Eliminar" />
+            <Button Text="Agregar" Clicked="OnAddClicked"/>
+            <Button Text="Modificar" Clicked="OnModifyClicked"/>
+            <Button Text="Eliminar" Clicked="OnDeleteClicked"/>
         </StackLayout>
 
         <!-- Lista de estudiantes -->
-        <Label Text="Lista de Estudiantes:" />
-        <ListView x:Name="studentsListView">
+        <Label Text="Lista de Estudiantes:"  />
+        <ListView x:Name="studentsListView" ItemSelected="studentsListView_ItemSelected">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <TextCell Text="{Binding Name}" Detail="{Binding Code}" />
+                    <TextCell Text="{Binding Nombre}" Detail="{Binding Codigo}" />
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>

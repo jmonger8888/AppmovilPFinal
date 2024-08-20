@@ -15,6 +15,18 @@ namespace AppmovilPFinal
         public ControlAsistencia()
         {
             InitializeComponent();
+    
+     
         }
+        private void OnAddAbsenceClicked(object sender, EventArgs e)
+        {
+
+        }
+        private void OnJustifyAbsenceClicked(object sender, EventArgs e)
+        {
+
+        }
+
     }
+
 }
