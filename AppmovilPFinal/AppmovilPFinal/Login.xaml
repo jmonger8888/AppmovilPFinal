@@ -1,19 +1,48 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="AppmovilPFinal.Login">
+             x:Class="AppmovilPFinal.Login"
+             BackgroundColor="#f8f5ec">
 
-    <!-- Login Section -->
-    <StackLayout x:Name="LoginSection" Padding="20" VerticalOptions="Center">
-        <Entry x:Name="UsernameEntry" Placeholder="Correo"  />
-        <Entry x:Name="PasswordEntry" Placeholder="Contraseña" IsPassword="True"  />
-        <Button Text="Iniciar Sesión" x:Name="Ingresar" Clicked="OnLoginButtonClicked" />
+    <StackLayout Padding="20" VerticalOptions="Center">
+        <!-- Logo -->
+        <Image Source="Logo.png"
+       HorizontalOptions="Center"
+       HeightRequest="150" 
+       WidthRequest="150"
+       Aspect="AspectFit"/>
 
-        <Label Text="¿No tiene cuenta? Regístrese aquí" FontSize="Small" TextColor="Blue" 
-                HorizontalOptions="Center">
-            <Label.GestureRecognizers>
-                <TapGestureRecognizer Tapped="OnRegisterLabelTapped" />
-            </Label.GestureRecognizers>
-        </Label>
+
+            <!-- Login Section -->
+        <Frame Padding="20"
+               BackgroundColor="#f8f5ec"
+               CornerRadius="10"
+               HasShadow="True">
+            <StackLayout Spacing="10">
+                <Entry x:Name="UsernameEntry" 
+                       Placeholder="Correo" 
+                       Keyboard="Email"
+                       BackgroundColor="#E8E8E8"/>
+                <Entry x:Name="PasswordEntry" 
+                       Placeholder="Contraseña" 
+                       IsPassword="True"
+                       BackgroundColor="#E8E8E8"/>
+                <Button Text="Iniciar Sesión" 
+                        x:Name="Ingresar" 
+                        Clicked="OnLoginButtonClicked" 
+                        BackgroundColor="#cb6ce6" 
+                        TextColor="White" 
+                        CornerRadius="5"/>
+
+                <Label Text="¿No tiene cuenta? Regístrese aquí" 
+                       FontSize="Small" 
+                       TextColor="#cb6ce6" 
+                       HorizontalOptions="Center">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnRegisterLabelTapped" />
+                    </Label.GestureRecognizers>
+                </Label>
+            </StackLayout>
+        </Frame>
     </StackLayout>
 </ContentPage>

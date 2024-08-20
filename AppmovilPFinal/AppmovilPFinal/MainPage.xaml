@@ -1,52 +1,94 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="AppmovilPFinal.MainPage">
+             x:Class="AppmovilPFinal.MainPage"
+             BackgroundColor="#f8f5ec">
 
-    <!-- Sección del Menú -->
-    <StackLayout>
-        <Label
+    <!-- Estilos -->
+    <ContentPage.Resources>
+        <Style x:Key="TitleLabelStyle" TargetType="Label">
+            <Setter Property="FontSize" Value="24" />
+            <Setter Property="TextColor" Value="#cb6ce6" />
+            <Setter Property="FontAttributes" Value="Bold" />
+            <Setter Property="HorizontalOptions" Value="Center" />
+            <Setter Property="VerticalOptions" Value="Center" />
+            <Setter Property="Margin" Value="0,0,0,20" />
+        </Style>
+
+        <Style x:Key="MenuButtonStyle" TargetType="Button">
+            <Setter Property="FontSize" Value="18" />
+            <Setter Property="TextColor" Value="#f26638" />
+            <Setter Property="FontAttributes" Value="Italic" />
+            <Setter Property="HorizontalOptions" Value="Center" />
+            <Setter Property="BackgroundColor" Value="White" />
+            <Setter Property="CornerRadius" Value="10" />
+            <Setter Property="Margin" Value="10,5" />
+            <Setter Property="Padding" Value="15" />
+        </Style>
+
+        <Style x:Key="CardStyle" TargetType="Frame">
+            <Setter Property="HasShadow" Value="True" />
+            <Setter Property="CornerRadius" Value="10" />
+            <Setter Property="Padding" Value="20" />
+            <Setter Property="BackgroundColor" Value="White" />
+            <Setter Property="BorderColor" Value="#b0bec5" />
+        </Style>
+    </ContentPage.Resources>
+
+    <!-- Contenedor principal con dos secciones -->
+    <StackLayout Padding="20" Spacing="15" VerticalOptions="FillAndExpand">
+
+        <!-- Título en la parte superior -->
+        <Label 
             Text="Escuela Deportiva ULACIT"
-            FontSize="Title"
-            TextColor="#cb6ce6"
-            FontAttributes="Bold"
-            HorizontalOptions="Center"
-            BackgroundColor="WhiteSmoke" />
+            Style="{StaticResource TitleLabelStyle}" />
 
-        <Button
-            Text="Gestión de Estudiantes"
-            FontSize="Subtitle"
-            TextColor="#f26638"
-            FontAttributes="Italic"
-            HorizontalOptions="Center"
-            BackgroundColor="WhiteSmoke"
-            Clicked="GestionEstudiantesClicked" />
+        <!-- Carousel -->
+        <CarouselView HeightRequest="300" 
+              Margin="0,0,0,20">
+            <CarouselView.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                    <x:String>baske.jpeg</x:String>
+                    <x:String>futb.jpeg</x:String>
+                    <x:String>voley.jpeg</x:String>
+                </x:Array>
+            </CarouselView.ItemsSource>
+            <CarouselView.ItemTemplate>
+                <DataTemplate>
+                    <Image Source="{Binding .}" Aspect="AspectFill" />
+                </DataTemplate>
+            </CarouselView.ItemTemplate>
+        </CarouselView>
 
-        <Button
-            Text="Registro de Asistencia"
-            FontSize="Subtitle"
-            TextColor="#f26638"
-            FontAttributes="Italic"
-            HorizontalOptions="Center"
-            BackgroundColor="WhiteSmoke"
-            Clicked="ControlAsistenciaClicked" />
 
-        <Button
-            Text="Consultas"
-            FontSize="Subtitle"
-            TextColor="#f26638"
-            FontAttributes="Italic"
-            HorizontalOptions="Center"
-            BackgroundColor="WhiteSmoke"
-            Clicked="ConsultasClicked" />
 
-        <Button
-            Text="Reportes"
-            FontSize="Subtitle"
-            TextColor="#f26638"
-            FontAttributes="Italic"
-            HorizontalOptions="Center"
-            BackgroundColor="WhiteSmoke" />
+        <!-- Opciones del menú -->
+        <Frame Style="{StaticResource CardStyle}">
+            <StackLayout Padding="10" Spacing="10" 
+                         VerticalOptions="CenterAndExpand" 
+                         HorizontalOptions="CenterAndExpand"
+                         Orientation="Vertical">
+                <Button 
+                    Text="Gestión de Estudiantes" 
+                    Style="{StaticResource MenuButtonStyle}" 
+                    Clicked="GestionEstudiantesClicked" />
+
+                <Button 
+                    Text="Registro de Asistencia" 
+                    Style="{StaticResource MenuButtonStyle}" 
+                    Clicked="ControlAsistenciaClicked" />
+
+                <Button 
+                    Text="Consultas" 
+                    Style="{StaticResource MenuButtonStyle}" 
+                    Clicked="ConsultasClicked" />
+
+                <Button 
+                    Text="Reportes" 
+                    Style="{StaticResource MenuButtonStyle}" />
+            </StackLayout>
+        </Frame>
+
     </StackLayout>
 
 </ContentPage>
