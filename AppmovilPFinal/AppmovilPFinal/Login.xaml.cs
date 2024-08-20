@@ -56,7 +56,7 @@ namespace AppmovilPFinal
             catch (Exception ex)
             {
                 Console.WriteLine("Error inesperado: " + ex.Message);
-                await DisplayAlert("Error", "Se produjo un error inesperado: " + ex.Message, "OK");
+                await DisplayAlert("Error", "Se produjo un error inesperado: ", "Complete con los datos correctos", "OK");
             }
         }
     }

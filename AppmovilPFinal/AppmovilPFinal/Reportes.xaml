@@ -85,8 +85,8 @@
                             <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
 
-                        <Button Text="AGREGAR"  Style="{StaticResource ButtonStyle}" Grid.Column="0" />
-                        <Button Text="ACTUALIZAR"  Style="{StaticResource ButtonStyle}" Grid.Column="1" />
+                        <Button Text="AGREGAR"  Style="{StaticResource ButtonStyle}" Grid.Column="0" Clicked="OnAddReporteClicked"/>
+                        <Button Text="ACTUALIZAR"  Style="{StaticResource ButtonStyle}" Grid.Column="1" Clicked="OnUpdateReporteClicked"/>
                     </Grid>
 
                 </StackLayout>
@@ -96,7 +96,7 @@
             <Frame Style="{StaticResource CardStyle}">
                 <StackLayout Padding="10" Spacing="10" VerticalOptions="FillAndExpand">
                     <Label Text="Lista de Reportes:" />
-                    <ListView x:Name="reportsListView" VerticalOptions="FillAndExpand">
+                    <ListView x:Name="reportsListView" VerticalOptions="FillAndExpand" ItemSelected="OnReporteSelected">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <TextCell Text="{Binding Title}" Detail="{Binding Date}" />
