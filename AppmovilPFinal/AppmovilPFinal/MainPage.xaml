@@ -1,23 +1,51 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppmovilPFinal.MainPage">
 
-    <!-- Menu Section -->
+    <!-- Sección del Menú -->
     <StackLayout>
-        <Label Text="Escuela Deportiva ULACIT" FontSize="Title" TextColor="#cb6ce6" FontAttributes="Bold" 
-               HorizontalOptions="Center" BackgroundColor="WhiteSmoke"/>
-        <Button Text="Gestión de Estudiantes" FontSize="Subtitle" TextColor="#f26638" FontAttributes="Italic" 
-               HorizontalOptions="Center" BackgroundColor="WhiteSmoke" Clicked="GestionEstudiantesClicked" />
-        <Button Text="Envío de Avisos" FontSize="Subtitle" TextColor="#f26638" FontAttributes="Italic" 
-               HorizontalOptions="Center" BackgroundColor="WhiteSmoke" />
-        <Button Text="Registro de Asistencia" FontSize="Subtitle" TextColor="#f26638" FontAttributes="Italic" 
-               HorizontalOptions="Center" BackgroundColor="WhiteSmoke" Clicked="ControlAsistenciaClicked" />
-        <Button Text="Registro de Salud y Medicación" FontSize="Subtitle" TextColor="#f26638" FontAttributes="Italic" 
-               HorizontalOptions="Center" BackgroundColor="WhiteSmoke" />
-        <Button Text="Consultas y Reportes" FontSize="Subtitle" TextColor="#f26638" FontAttributes="Italic" 
-               HorizontalOptions="Center" BackgroundColor="WhiteSmoke" />
+        <Label
+            Text="Escuela Deportiva ULACIT"
+            FontSize="Title"
+            TextColor="#cb6ce6"
+            FontAttributes="Bold"
+            HorizontalOptions="Center"
+            BackgroundColor="WhiteSmoke" />
 
+        <Button
+            Text="Gestión de Estudiantes"
+            FontSize="Subtitle"
+            TextColor="#f26638"
+            FontAttributes="Italic"
+            HorizontalOptions="Center"
+            BackgroundColor="WhiteSmoke"
+            Clicked="GestionEstudiantesClicked" />
+
+        <Button
+            Text="Registro de Asistencia"
+            FontSize="Subtitle"
+            TextColor="#f26638"
+            FontAttributes="Italic"
+            HorizontalOptions="Center"
+            BackgroundColor="WhiteSmoke"
+            Clicked="ControlAsistenciaClicked" />
+
+        <Button
+            Text="Consultas"
+            FontSize="Subtitle"
+            TextColor="#f26638"
+            FontAttributes="Italic"
+            HorizontalOptions="Center"
+            BackgroundColor="WhiteSmoke" />
+
+        <Button
+            Text="Reportes"
+            FontSize="Subtitle"
+            TextColor="#f26638"
+            FontAttributes="Italic"
+            HorizontalOptions="Center"
+            BackgroundColor="WhiteSmoke" />
     </StackLayout>
 
 </ContentPage>
