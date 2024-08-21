@@ -97,6 +97,43 @@ namespace AppmovilPFinal
                 reportsListView.SelectedItem = null;
             }
         }
+        // Método para eliminar un reporte seleccionado
+        public async void OnDeleteReporteClicked(object sender, EventArgs e)
+        {
+            var button = sender as Button;
+            var reporteAEliminar = button?.CommandParameter as Reporte;
+
+            if (reporteAEliminar != null)
+            {
+                bool isConfirmed = await DisplayAlert("Confirmación", "¿Estás seguro de que deseas eliminar este reporte?", "Sí", "No");
+                if (isConfirmed)
+                {
+                    try
+                    {
+                        // Eliminar el reporte de Firebase
+                        await firebaseClient
+                            .Child("Reportes")
+                            .Child(reporteAEliminar.Id)
+                            .DeleteAsync();
+
+                        // Eliminar el reporte de la lista local
+                        reportesList.Remove(reporteAEliminar);
+                        reportsListView.ItemsSource = null;
+                        reportsListView.ItemsSource = reportesList;
+
+                        await DisplayAlert("Éxito", "Reporte eliminado correctamente", "OK");
+                    }
+                    catch (Exception ex)
+                    {
+                        await DisplayAlert("Error", $"No se pudo eliminar el reporte: {ex.Message}", "OK");
+                    }
+                }
+            }
+            else
+            {
+                await DisplayAlert("Error", "No se pudo eliminar el reporte", "OK");
+            }
+        }
 
         //Método para actualizar un reporte existente y realizar los cambios deceados
         public async void OnUpdateReporteClicked(object sender, EventArgs e)

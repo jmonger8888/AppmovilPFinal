@@ -97,10 +97,10 @@
                                 <ViewCell>
                                     <StackLayout Orientation="Horizontal">
                                         <Label Text="{Binding Code}" FontAttributes="Bold" />
-                                        <Label Text="{Binding StudentName}" />
+                                        <Label Text="{Binding StudentName}" />              
                                         <Label Text="{Binding Date}" />
                                         <Label Text="{Binding IsJustified, StringFormat='Justificado: {0}'}" />
-                                        <Button Text="Eliminar" Style="{StaticResource ButtonStyle}" CommandParameter="{Binding .}" />
+                                        <Button Text="Eliminar" Style="{StaticResource ButtonStyle}" CommandParameter="{Binding .}" Clicked="OnDeleteClicked"/>
                                     </StackLayout>
                                 </ViewCell>
                             </DataTemplate>

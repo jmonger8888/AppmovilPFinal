@@ -73,6 +73,36 @@ namespace AppmovilPFinal
             //mensaje de confirmación
             await DisplayAlert("Éxito", "Ausencia registrada correctamente", "OK");
         }
+        //Método para eliminar una ausencia
+        public async void OnDeleteClicked(object sender, EventArgs e)
+        {
+            var button = sender as Button;
+            var attendanceToDelete = button?.CommandParameter as Attendance;
+
+            if (attendanceToDelete != null)
+            {
+                bool isConfirmed = await DisplayAlert("Confirmación", "¿Estás seguro de que deseas eliminar esta ausencia?", "Sí", "No");
+                if (isConfirmed)
+                {
+                    // Eliminar de Firebase
+                    await firebaseClient
+                        .Child("Ausencias")
+                        .Child(attendanceToDelete.Id)
+                        .DeleteAsync();
+
+                    // Eliminar de la lista en la app
+                    attendanceList.Remove(attendanceToDelete);
+                    attendanceListView.ItemsSource = null;
+                    attendanceListView.ItemsSource = attendanceList;
+
+                    await DisplayAlert("Éxito", "Ausencia eliminada correctamente", "OK");
+                }
+            }
+            else
+            {
+                await DisplayAlert("Error", "No se pudo eliminar la ausencia", "OK");
+            }
+        }
 
         //Método para justificar una ausencia seleccionada
         public async void OnJustifyAbsenceClicked(object sender, EventArgs e)
