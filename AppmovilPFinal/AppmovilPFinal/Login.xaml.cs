@@ -60,6 +60,7 @@ namespace AppmovilPFinal
                 await DisplayAlert("Error", "Se produjo un error inesperado: ", "Complete con los datos correctos", "OK");
             }
         }
+        //restablecer contrasena
         public async void OnForgotPasswordLabelTapped(object sender, EventArgs e)
         {
             string email = UsernameEntry.Text;
