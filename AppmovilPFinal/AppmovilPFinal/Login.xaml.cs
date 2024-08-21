@@ -60,6 +60,34 @@ namespace AppmovilPFinal
                 await DisplayAlert("Error", "Se produjo un error inesperado: ", "Complete con los datos correctos", "OK");
             }
         }
+        public async void OnForgotPasswordLabelTapped(object sender, EventArgs e)
+        {
+            string email = UsernameEntry.Text;
+
+            if (string.IsNullOrEmpty(email))
+            {
+                await DisplayAlert("Error", "Por favor, ingrese su correo electrónico para restablecer la contraseña.", "OK");
+                return;
+            }
+
+            try
+            {
+                var authProvider = new FirebaseAuthProvider(new FirebaseConfig("AIzaSyAqASqMwQkDgjD5PovIehR7pwZPtcBGiQk"));
+                await authProvider.SendPasswordResetEmailAsync(email);
+                await DisplayAlert("Éxito", "Se ha enviado un enlace para restablecer la contraseña a su correo electrónico.", "OK");
+            }
+            catch (FirebaseAuthException ex)
+            {
+                Console.WriteLine("Error de Firebase: " + ex.Reason);
+                await DisplayAlert("Error", "No se pudo enviar el correo de restablecimiento: " + ex.Reason, "OK");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error inesperado: " + ex.Message);
+                await DisplayAlert("Error", "Se produjo un error inesperado: " + ex.Message, "OK");
+            }
+        }
+
     }
 
 }

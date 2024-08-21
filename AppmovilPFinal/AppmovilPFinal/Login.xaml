@@ -42,6 +42,16 @@
                         <TapGestureRecognizer Tapped="OnRegisterLabelTapped" />
                     </Label.GestureRecognizers>
                 </Label>
+                
+                <Label Text="He olvidado mi contraseña" 
+       FontSize="Small" 
+       TextColor="#cb6ce6" 
+       HorizontalOptions="Center">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnForgotPasswordLabelTapped" />
+                    </Label.GestureRecognizers>
+                </Label>
+
             </StackLayout>
         </Frame>
     </StackLayout>
