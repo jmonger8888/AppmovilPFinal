@@ -87,6 +87,7 @@
 
                         <Button Text="AGREGAR"  Style="{StaticResource ButtonStyle}" Grid.Column="0" Clicked="OnAddReporteClicked"/>
                         <Button Text="ACTUALIZAR"  Style="{StaticResource ButtonStyle}" Grid.Column="1" Clicked="OnUpdateReporteClicked"/>
+
                     </Grid>
 
                 </StackLayout>
@@ -99,7 +100,13 @@
                     <ListView x:Name="reportsListView" VerticalOptions="FillAndExpand" ItemSelected="OnReporteSelected">
                         <ListView.ItemTemplate>
                             <DataTemplate>
-                                <TextCell Text="{Binding Title}" Detail="{Binding Date}" />
+                                <ViewCell>
+                                    <StackLayout Orientation="Horizontal" VerticalOptions="Center">
+                                        <Label Text="{Binding Title}" FontAttributes="Bold" VerticalOptions="Center" />
+                                        <Label Text="{Binding Date}" VerticalOptions="Center" Margin="10,0" />
+                                        <Button Text="Eliminar" Style="{StaticResource ButtonStyle}" CommandParameter="{Binding .}" VerticalOptions="Center" />
+                                    </StackLayout>
+                                </ViewCell>
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
